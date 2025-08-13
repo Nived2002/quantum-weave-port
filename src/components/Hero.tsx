@@ -8,6 +8,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToProjects = () => {
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Spline 3D Background */}
@@ -29,23 +36,36 @@ const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <h1 className="text-5xl md:text-7xl font-light mb-6 fade-in">
-          Hi, I'm <span className="text-glow font-medium">Nivedshanker</span>
+        {/* Text Background for better visibility */}
+        <div className="absolute inset-0 bg-background/20 backdrop-blur-sm rounded-3xl -z-10" />
+        
+        <h1 className="text-5xl md:text-7xl font-light mb-6 fade-in text-foreground drop-shadow-2xl">
+          Hi, I'm <span className="text-glow font-medium bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Nivedshanker</span>
         </h1>
-        <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8 fade-in-delay-1">
+        <h2 className="text-2xl md:text-3xl text-foreground/90 mb-8 fade-in-delay-1 drop-shadow-lg">
           Web Developer
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground mb-12 fade-in-delay-2 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-foreground/80 mb-12 fade-in-delay-2 max-w-2xl mx-auto drop-shadow-lg">
           Crafting digital experiences with modern technologies and innovative solutions
         </p>
         
-        <button
-          onClick={scrollToContact}
-          className="btn-glow fade-in-delay-3 group"
-        >
-          Hire Me
-          <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-delay-3">
+          <button
+            onClick={scrollToContact}
+            className="btn-glow group flex items-center justify-center"
+          >
+            <span>Hire Me</span>
+            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
+          
+          <button
+            onClick={scrollToProjects}
+            className="glass-card px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 border border-white/20 text-foreground hover:border-primary/50 flex items-center justify-center group"
+          >
+            <span>View My Work</span>
+            <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
       </div>
     </section>
   );

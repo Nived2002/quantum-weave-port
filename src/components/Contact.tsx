@@ -128,9 +128,9 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-glow group disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn-glow group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                 <Send className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </form>
