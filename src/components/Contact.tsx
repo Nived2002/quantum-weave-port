@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Mail, Github, Linkedin, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Contact = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [contentRef, contentVisible] = useScrollAnimation();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,18 +40,18 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 px-6">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-light mb-6 text-glow fade-in">
+        <div ref={titleRef} className={`text-center mb-16 scroll-fade-up ${titleVisible ? 'visible' : ''}`}>
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-glow">
             Get In Touch
           </h2>
-          <p className="text-lg text-muted-foreground fade-in-delay-1">
+          <p className="text-lg text-muted-foreground">
             Ready to collaborate? Let's create something amazing together
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div ref={contentRef} className={`grid md:grid-cols-2 gap-12 scroll-fade-up ${contentVisible ? 'visible' : ''}`}>
           {/* Contact Info */}
-          <div className="slide-in-left space-y-8">
+          <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-medium mb-6 text-foreground">
                 Contact Information
@@ -87,7 +91,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="slide-in-right">
+          <div className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <input

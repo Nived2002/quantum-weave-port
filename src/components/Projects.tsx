@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react';
+import { useScrollAnimation, useStaggeredAnimation } from '@/hooks/useScrollAnimation';
 import project1 from '@/assets/project-1.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
@@ -7,6 +8,9 @@ import project5 from '@/assets/project-5.jpg';
 import project6 from '@/assets/project-6.jpg';
 
 const Projects = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [projectsRef, projectsVisible] = useStaggeredAnimation(6, 200);
+
   const projects = [
     {
       id: 1,
@@ -67,21 +71,23 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-light mb-6 text-glow fade-in">
+        <div ref={titleRef} className={`text-center mb-16 scroll-fade-up ${titleVisible ? 'visible' : ''}`}>
+          <h2 className="text-4xl md:text-5xl font-light mb-6 text-glow">
             Featured Projects
           </h2>
-          <p className="text-lg text-muted-foreground fade-in-delay-1 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore my latest work showcasing modern development practices and innovative solutions
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={projectsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="glass-card group hover:scale-105 transition-all duration-500 overflow-hidden fade-in-delay-2"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`glass-card group hover:scale-105 transition-all duration-500 overflow-hidden scroll-scale-up ${
+                projectsVisible[index] ? 'visible' : ''
+              }`}
+              style={{ transitionDelay: `${index * 200}ms` }}
             >
               <div className="relative overflow-hidden">
                 <img

@@ -1,6 +1,9 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Footer = () => {
+  const [footerRef, footerVisible] = useScrollAnimation();
+  
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -9,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-12 px-6 border-t border-border/50 relative overflow-hidden">
+    <footer ref={footerRef} className={`py-12 px-6 border-t border-border/50 relative overflow-hidden scroll-fade-up ${footerVisible ? 'visible' : ''}`}>
       {/* Floating Particles */}
       <div className="glow-orb w-32 h-32 top-10 left-10 floating opacity-10" />
       <div className="glow-orb w-24 h-24 top-20 right-20 floating opacity-10" style={{ animationDelay: '3s' }} />

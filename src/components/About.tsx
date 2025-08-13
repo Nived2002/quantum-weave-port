@@ -1,6 +1,10 @@
 import { Code2, Database, Globe, Smartphone, Server, Zap } from 'lucide-react';
+import { useScrollAnimation, useStaggeredAnimation } from '@/hooks/useScrollAnimation';
 
 const About = () => {
+  const [aboutRef, aboutVisible] = useScrollAnimation();
+  const [skillsRef, skillsVisible] = useStaggeredAnimation(6, 150);
+
   const skills = [
     { icon: Code2, name: 'Frontend', color: 'text-primary' },
     { icon: Server, name: 'Backend', color: 'text-secondary' },
@@ -11,11 +15,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-6">
+    <section ref={aboutRef} id="about" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Profile Image */}
-          <div className="slide-in-left">
+          <div className={`scroll-fade-left ${aboutVisible ? 'visible' : ''}`}>
             <div className="relative group">
               <div className="w-80 h-80 mx-auto rounded-full overflow-hidden glass-card p-2">
                 <img
@@ -29,7 +33,7 @@ const About = () => {
           </div>
 
           {/* About Content */}
-          <div className="slide-in-right space-y-8">
+          <div className={`scroll-fade-right ${aboutVisible ? 'visible' : ''} space-y-8`}>
             <div>
               <h2 className="text-4xl md:text-5xl font-light mb-6 text-glow">
                 About Me
@@ -53,7 +57,7 @@ const About = () => {
             </div>
 
             {/* Skills Grid */}
-            <div>
+            <div ref={skillsRef}>
               <h3 className="text-2xl font-medium mb-6 text-foreground">
                 Core Skills
               </h3>
@@ -61,8 +65,10 @@ const About = () => {
                 {skills.map((skill, index) => (
                   <div
                     key={skill.name}
-                    className="glass-card p-4 text-center group hover:scale-105 transition-all duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className={`glass-card p-4 text-center group hover:scale-105 transition-all duration-300 scroll-stagger ${
+                      skillsVisible[index] ? 'visible' : ''
+                    }`}
+                    style={{ transitionDelay: `${index * 150}ms` }}
                   >
                     <skill.icon className={`w-8 h-8 mx-auto mb-2 icon-glow ${skill.color}`} />
                     <span className="text-sm font-medium">{skill.name}</span>
