@@ -43,7 +43,7 @@ const Hero = () => {
           Hi, I'm <span className="text-glow font-medium bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Nivedshanker</span>
         </h1>
         <h2 className="text-2xl md:text-3xl text-foreground/90 mb-8 fade-in-delay-1 drop-shadow-lg">
-          Web Developer
+          Fullstack Developer
         </h2>
         <p className="text-lg md:text-xl text-foreground/80 mb-12 fade-in-delay-2 max-w-2xl mx-auto drop-shadow-lg">
           Crafting digital experiences with modern technologies and innovative solutions

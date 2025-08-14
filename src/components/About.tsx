@@ -40,7 +40,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  I'm a passionate web developer with expertise in building modern, 
+                  I'm a passionate Fullstack developer with expertise in building modern, 
                   scalable applications using cutting-edge technologies.
                 </p>
                 <p>

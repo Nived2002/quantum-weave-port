@@ -1,11 +1,10 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { useScrollAnimation, useStaggeredAnimation } from '@/hooks/useScrollAnimation';
-import project1 from '@/assets/project-1.jpg';
+import project1 from '@/assets/project-1.png';
 import project2 from '@/assets/project-2.jpg';
-import project3 from '@/assets/project-3.jpg';
+import project3 from '@/assets/project-3.png';
 import project4 from '@/assets/project-4.jpg';
-import project5 from '@/assets/project-5.jpg';
-import project6 from '@/assets/project-6.jpg';
+import project5 from '@/assets/project-5.png';
 
 const Projects = () => {
   const [titleRef, titleVisible] = useScrollAnimation();
@@ -14,12 +13,11 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Real-Time Collaborative Code Editor',
+      title: 'Real-Time Collaborative Code Editor(Dev)',
       description: 'Full-stack collaborative coding platform with real-time synchronization, version control, and secure code execution.',
       image: project1,
       tech: ['ReactJS', 'Node.js', 'MongoDB', 'WebSocket', 'Docker', 'JWT'],
-      github: '#',
-      demo: '#'
+      github: 'https://github.com/OttrPad/Backend'
     },
     {
       id: 2,
@@ -27,8 +25,7 @@ const Projects = () => {
       description: 'Complete e-commerce solution with product browsing, shopping cart, order placement, and normalized database design.',
       image: project2,
       tech: ['ReactJS', 'MySQL', 'Express.js', 'Payment Gateway'],
-      github: '#',
-      demo: '#'
+      github: 'https://github.com/hasithasandunlakshan/DATABASE_PROJECT_SEMESTER3-SINGLE_VENDOR_ECOMMERCE-PLATFORM'
     },
     {
       id: 3,
@@ -36,8 +33,7 @@ const Projects = () => {
       description: 'Real-time synchronized task management application with caching, CRUD operations, and responsive design.',
       image: project3,
       tech: ['React.js', 'Node.js', 'TailwindCSS', 'Redis', 'MongoDB'],
-      github: '#',
-      demo: '#'
+      github: 'https://github.com/Nived2002/SnapNote'
     },
     {
       id: 4,
@@ -45,26 +41,16 @@ const Projects = () => {
       description: 'Custom programming language interpreter with lexer, parser, and optimized execution logic implementation.',
       image: project4,
       tech: ['Python', 'Compiler Design', 'Algorithm Optimization'],
-      github: '#',
-      demo: '#'
+      github: 'https://github.com/Nived2002/RPAL-Interpreter'
     },
     {
       id: 5,
-      title: 'Real-Time Chat Application',
+      title: 'Real-Time Chat Application(Dev)',
       description: 'Multi-room chat application with instant message delivery, WebSocket connections, and responsive UI design.',
       image: project5,
       tech: ['React.js', 'Node.js', 'Express.js', 'WebSocket', 'MongoDB'],
-      github: '#',
-      demo: '#'
-    },
-    {
-      id: 6,
-      title: 'Portfolio Showcase',
-      description: 'Modern developer portfolio with futuristic design, smooth animations, and responsive architecture.',
-      image: project6,
-      tech: ['React', 'TypeScript', 'TailwindCSS', 'Framer Motion'],
-      github: '#',
-      demo: '#'
+      github: 'https://github.com/Nived2002/fullstack-chat-app'
+
     }
   ];
 
@@ -124,13 +110,6 @@ const Projects = () => {
                   >
                     <Github size={16} />
                     <span className="text-sm">Code</span>
-                  </a>
-                  <a
-                    href={project.demo}
-                    className="flex items-center space-x-2 text-muted-foreground hover:text-accent transition-colors duration-300"
-                  >
-                    <ExternalLink size={16} />
-                    <span className="text-sm">Demo</span>
                   </a>
                 </div>
               </div>
